@@ -1,6 +1,21 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import Character from './components/Character'
+import styled from 'styled-components'
+
+const AppStyle = styled.h1`
+  color: black;
+  margin: 0 auto;
+  margin-top: 2%;
+  margin-bottom: 5%;
+  width: 55%;
+  border-radius: 50%;
+  transition: all 0.2s ease-in-out;
+  &:hover {
+    background-color: gold;
+    color: white;
+  }
+`
 
 const App = () => {
   // Try to think through what state you'll need for this app before starting. Then build out
@@ -13,7 +28,7 @@ const App = () => {
 
   useEffect(() => {
     axios
-      .get('https://swapi.dev/api/people/')
+      .get('https://swapi.dev/api/people')
       .then((res) => {
         setCharacters(res.data.results)
       })
@@ -22,7 +37,7 @@ const App = () => {
 
   return (
     <div className='App'>
-      <h1 className='Header'>Star Wars Characters</h1>
+      <AppStyle className='Header'>Star Wars Characters</AppStyle>
       {characters?.map((character) => {
         return <Character data={character} key={character.name} />
       })}
