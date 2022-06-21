@@ -38,7 +38,7 @@ const App = () => {
   return (
     <div className='App'>
       <AppStyle className='Header'>Star Wars Characters</AppStyle>
-      {characters?.map((character) => {
+      {characters.map((character) => {
         return <Character data={character} key={character.name} />
       })}
     </div>
